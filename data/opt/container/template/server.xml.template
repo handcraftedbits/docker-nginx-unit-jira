@@ -118,7 +118,7 @@
         <Engine name="Catalina" defaultHost="localhost">
             <Host name="localhost" appBase="webapps" unpackWARs="true" autoDeploy="true">
 
-              <Context path="${NGINX_URL_PREFIX}" docBase="${catalina.home}/atlassian-jira" reloadable="false" useHttpOnly="true">
+                <Context path="${NGINX_URL_PREFIX}" docBase="${catalina.home}/atlassian-jira" reloadable="false" useHttpOnly="true">
 
 
                     <!--
@@ -133,6 +133,7 @@
                     <Resource name="UserTransaction" auth="Container" type="javax.transaction.UserTransaction"
                               factory="org.objectweb.jotm.UserTransactionFactory" jotm.timeout="60"/>
                     <Manager pathname=""/>
+                    <JarScanner scanManifest="false"/>
                 </Context>
 
             </Host>
