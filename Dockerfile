@@ -1,7 +1,7 @@
-FROM handcraftedbits/nginx-unit-java:8.112.15
+FROM handcraftedbits/nginx-unit-java:8.112.15-1
 MAINTAINER HandcraftedBits <opensource@handcraftedbits.com>
 
-ARG JIRA_VERSION=7.2.6
+ARG JIRA_VERSION=7.3.0
 
 ENV JIRA_HOME /opt/data/jira
 
