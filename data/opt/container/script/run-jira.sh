@@ -6,8 +6,6 @@
 
 checkCommonRequiredVariables
 
-notifyUnitLaunched
-
 copyUnitConf nginx-unit-jira > /dev/null
 
 logUrlPrefix "jira"
@@ -26,8 +24,9 @@ fileSubstitute ${jira_config} NGINX_URL_PREFIX `normalizeSlashesSingleSlashToEmp
 # Import certificate (so we can integrate with other Atlassian product instances).
 
 printf "changeit\nyes" | keytool -import -trustcacerts -alias root \
-     -file /etc/letsencrypt/live/${NGINX_UNIT_HOSTS}/fullchain.pem -keystore ${JAVA_HOME}/jre/lib/security/cacerts
+     -file /etc/letsencrypt/live/${NGINX_UNIT_HOSTS}/fullchain.pem -keystore \
+     /usr/lib/jvm/default-jvm/jre/lib/security/cacerts
 
- # Start JIRA.
+# Start JIRA.
 
-/opt/jira/bin/start-jira.sh -fg
+exec /opt/jira/bin/start-jira.sh -fg

@@ -1,14 +1,12 @@
-FROM handcraftedbits/nginx-unit-java:8.112.15-1
+FROM handcraftedbits/nginx-unit:1.1.0
 MAINTAINER HandcraftedBits <opensource@handcraftedbits.com>
 
-ARG JIRA_VERSION=7.3.0
+ARG JIRA_VERSION=7.3.1
 
 ENV JIRA_HOME /opt/data/jira
 
-COPY data /
-
 RUN apk update && \
-  apk add ca-certificates wget && \
+  apk add bash ca-certificates openjdk8-jre wget && \
 
   cd /opt && \
   wget https://www.atlassian.com/software/jira/downloads/binary/atlassian-jira-software-${JIRA_VERSION}.tar.gz && \
@@ -16,8 +14,10 @@ RUN apk update && \
   rm atlassian-jira-software-${JIRA_VERSION}.tar.gz && \
   mv atlassian-jira-software-${JIRA_VERSION}-standalone jira && \
 
-  apk del ca-certificates wget
+  apk del wget
+
+COPY data /
 
 EXPOSE 8080
 
-CMD ["/bin/bash", "/opt/container/script/run-jira.sh"]
+CMD [ "/bin/bash", "/opt/container/script/run-jira.sh" ]
