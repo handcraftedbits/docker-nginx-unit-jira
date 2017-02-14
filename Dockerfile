@@ -1,4 +1,4 @@
-FROM handcraftedbits/nginx-unit:1.1.0
+FROM handcraftedbits/nginx-unit:1.1.1
 MAINTAINER HandcraftedBits <opensource@handcraftedbits.com>
 
 ARG JIRA_VERSION=7.3.1
@@ -6,7 +6,7 @@ ARG JIRA_VERSION=7.3.1
 ENV JIRA_HOME /opt/data/jira
 
 RUN apk update && \
-  apk add bash ca-certificates openjdk8-jre wget && \
+  apk add ca-certificates openjdk8-jre wget && \
 
   cd /opt && \
   wget https://www.atlassian.com/software/jira/downloads/binary/atlassian-jira-software-${JIRA_VERSION}.tar.gz && \

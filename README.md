@@ -59,9 +59,8 @@ jira:
   links:
     - db-jira
   volumes:
+    - data:/opt/container/shared
     - /home/me/jira:/opt/data/jira
-  volumes_from:
-    - data
 ```
 
 Observe the following:
@@ -79,12 +78,12 @@ Finally, we need to create a link in our NGINX Host container to the `jira` cont
 our final `docker-compose.yml` file:
 
 ```yaml
-version: "3"
+version: "2.1"
+
+volumes:
+  data:
 
 services:
-  data:
-    image: handcraftedbits/nginx-host-data
-
   db-jira:
     image: postgres
     environment:
@@ -102,9 +101,8 @@ services:
     links:
       - db-jira
     volumes:
+      - data:/opt/container/shared
       - /home/me/jira:/opt/data/jira
-    volumes_from:
-      - data
 
   proxy:
     image: handcraftedbits/nginx-host
@@ -114,10 +112,9 @@ services:
     ports:
       - "443:443"
     volumes:
+      - data:/opt/container/shared
       - /etc/letsencrypt:/etc/letsencrypt
       - /home/me/dhparam.pem:/etc/ssl/dhparam.pem
-    volumes_from:
-      - data
 ```
 
 This will result in making a JIRA instance available at `https://mysite.com/jira`.
