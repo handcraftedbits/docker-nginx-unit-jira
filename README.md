@@ -68,7 +68,7 @@ Observe the following:
 * We create a link in `jira` to `db-jira` in order to allow JIRA to connect to our database.
 * We mount `/opt/data/jira` using the local directory `/home/me/jira`.  This is the directory where JIRA stores its
   data.
-* As with any other NGINX Host unit, we mount our data volume, in this case named `data`, to `/opt/container/data`.
+* As with any other NGINX Host unit, we mount our data volume, in this case named `data`, to `/opt/container/shared`.
 
 For more information on configuring the PostgreSQL container, consult its
 [documentation](https://hub.docker.com/_/postgres/).
