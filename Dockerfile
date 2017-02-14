@@ -1,4 +1,4 @@
-FROM handcraftedbits/nginx-unit:1.1.1
+FROM handcraftedbits/nginx-unit:1.1.2
 MAINTAINER HandcraftedBits <opensource@handcraftedbits.com>
 
 ARG JIRA_VERSION=7.3.1
