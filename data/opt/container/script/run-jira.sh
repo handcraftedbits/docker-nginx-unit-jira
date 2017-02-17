@@ -8,7 +8,7 @@ checkCommonRequiredVariables
 
 notifyUnitLaunched
 
-unitConf=`copyUnitConf nginx-unit-jira`
+copyUnitConf nginx-unit-jira > /dev/null
 
 logUrlPrefix "jira"
 
@@ -31,4 +31,4 @@ printf "changeit\nyes" | keytool -import -trustcacerts -alias root \
 
 # Start JIRA.
 
-startProcessWithTrap onProcessStopped ${unitConf} /opt/jira/bin/start-jira.sh -fg
+exec /opt/jira/bin/start-jira.sh -fg
