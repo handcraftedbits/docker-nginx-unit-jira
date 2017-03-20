@@ -6,7 +6,7 @@ A [Docker](https://www.docker.com) container that provides an
 
 # Features
 
-* Atlassian JIRA 7.3.1
+* Atlassian JIRA 7.3.3
 * NGINX Host SSL certificates are automatically imported into JIRA's JVM so Atlassian application links can easily be 
   created
 
